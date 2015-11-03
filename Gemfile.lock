@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jetel (0.0.2)
+    jetel (0.0.3)
       activesupport
       gli
       json_pure
