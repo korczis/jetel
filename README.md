@@ -22,7 +22,9 @@ COMMANDS
     version - Print version info
 ```
 
-## rake 
+## Executables
+
+### Rake
 
 ```
 tomaskorcak@kx-mac:~/dev/jetel$ bundle exec rake -T
