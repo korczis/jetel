@@ -2,7 +2,7 @@
 
 require 'gli'
 
-module Jetel
+module Esri
   module Cli
     # Shared CLI Stuff
     module Shared

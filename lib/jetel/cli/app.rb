@@ -15,13 +15,11 @@ include GLI::App
 
 program_desc "Jetel CLI #{Jetel::VERSION}"
 
-module Jetel
+module Esri
   # ESRI CLI
   module Cli
     # CLI Application
     class App
-      extend Jetel::Cli::Shared
-
       cmds = File.absolute_path(File.join(File.dirname(__FILE__), 'cmd'))
       Dir.glob(cmds + '/*.rb').each do |file|
         require file

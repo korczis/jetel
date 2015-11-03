@@ -4,25 +4,25 @@ require_relative 'backends/aria'
 
 module Jetel
   class Downloader
-    class << self
-      def download(file)
-        file.is_a?(Array) ? download_files(file) : download_file(file)
-      end
+    attr_reader :downloader
 
-      def download_files(files)
-        files.map do |file|
-          download_file(file)
-        end
-      end
+    def initialize
+      @downloader = Downloaders::Aria.new
+    end
 
-      def download_file(file)
-        puts "Downloading file #{file}"
-       select_downloader.download(file)
-      end
+    def download(file)
+      file.is_a?(Array) ? download_files(file) : download_file(file)
+    end
 
-      def select_downloader
-        Downloaders::Aria
+    def download_files(files)
+      files.map do |file|
+        download_file(file)
       end
+    end
+
+    def download_file(file)
+      puts "Downloading file #{file}"
+      downloader.download(file)
     end
   end
 end
