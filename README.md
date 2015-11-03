@@ -1,5 +1,27 @@
 # jetel
 
+## CLI - Command Line Interface
+
+Run `jetel`
+
+```
+tomaskorcak@kx-mac:~/dev/jetel$ ./bin/jetel
+NAME
+    jetel - Jetel CLI 0.0.1
+
+SYNOPSIS
+    jetel [global options] command [command options] [arguments...]
+
+GLOBAL OPTIONS
+    --help - Show this message
+
+COMMANDS
+    help    - Shows a list of commands or help for one command
+    ip, Ip  - Module ip
+    modules - Print modules info
+    version - Print version info
+```
+
 ## rake 
 
 ```
