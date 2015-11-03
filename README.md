@@ -5,7 +5,7 @@
 Run `jetel`
 
 ```
-tomaskorcak@kx-mac:~/ jetel
+tomaskorcak@kx-mac:~$ jetel
 NAME
     jetel - Jetel CLI 0.0.1
 
