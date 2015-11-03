@@ -1,5 +1,3 @@
-require 'jetel/version'
+# encoding: utf-8
 
-module Jetel
-  # Your code goes here...
-end
+require_relative 'jetel/lib'
