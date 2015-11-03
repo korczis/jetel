@@ -6,7 +6,7 @@ require_relative '../../modules/module'
 
 module Jetel
   module Modules
-    class Geonames < Module
+    class Nga < Module
       SOURCES = [
         {
           name: 'AFGHANISTAN',
@@ -1040,7 +1040,8 @@ module Jetel
 
       def download
         SOURCES.pmap do |source|
-          downloader.download(source[:url])
+          target_dir = Helper.target_dir(self, source)
+          downloader.download(source[:url], {:dir => target_dir})
         end
       end
 

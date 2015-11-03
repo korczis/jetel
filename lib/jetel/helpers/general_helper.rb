@@ -6,7 +6,7 @@ module Jetel
   module Helper
     class << self
       def target_dir(modul, source)
-        "#{Config[:DATA_DIRECTORY]}"
+        "#{File.join(Config[:DATA_DIRECTORY], modul.class.name.split('::').last, source[:name])}"
       end
     end
   end

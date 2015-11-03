@@ -39,7 +39,7 @@ module Jetel
       def download
         SOURCES.pmap do |source|
           target_dir = Helper.target_dir(self, source)
-          downloader.download(source[:url], {:dir => target_dir + '/ip'})
+          downloader.download(source[:url], {:dir => target_dir})
         end
       end
 
