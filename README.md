@@ -22,6 +22,24 @@ COMMANDS
     version - Print version info
 ```
 
+## Structure
+
+```
+.
+├── bin
+├── lib
+│   └── jetel
+│       ├── cli
+│       │   └── cmd
+│       ├── downloader
+│       ├── etl
+│       ├── extensions
+│       └── modules
+│           └── ip
+├── pkg
+└── test
+```
+
 ## Executables
 
 ### Rake
