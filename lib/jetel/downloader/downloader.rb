@@ -1,3 +1,7 @@
+# encoding: utf-8
+
+require_relative 'backends/aria'
+
 module Jetel
   class Downloader
     class << self
@@ -13,6 +17,11 @@ module Jetel
 
       def download_file(file)
         puts "Downloading file #{file}"
+       select_downloader.download(file)
+      end
+
+      def select_downloader
+        Downloaders::Aria
       end
     end
   end

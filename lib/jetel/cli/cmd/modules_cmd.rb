@@ -20,10 +20,21 @@ MODULES_ACTIONS = {
   load: nil
 }
 
+# Gets module name
+#
+# @param m [Hash] Module info
+# @return [String] Module name
 def get_module_name(m)
   m[:name]
 end
 
+# Register module (CLI) action
+#
+# @param c [] Parent command
+# @param m [Module] Module instance
+# @param action_command [String] Nested command name
+# @param action_desc [String] Nested command action description
+# @return [Object] Return value
 def register_module_action(c, _m, action_command, action_desc, &block)
   c.desc(action_desc)
   c.command(action_command) do |cmd|
