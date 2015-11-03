@@ -10,19 +10,18 @@ module Jetel
       @downloader = Downloaders::Aria.new
     end
 
-    def download(file)
-      file.is_a?(Array) ? download_files(file) : download_file(file)
+    def download(file, opts = {})
+      file.is_a?(Array) ? download_files(file, opts) : download_file(file, opts)
     end
 
-    def download_files(files)
+    def download_files(files, opts = {})
       files.map do |file|
-        download_file(file)
+        download_file(file, opts)
       end
     end
 
-    def download_file(file)
-      puts "Downloading file #{file}"
-      downloader.download(file)
+    def download_file(file, opts = {})
+      downloader.download(file, opts)
     end
   end
 end

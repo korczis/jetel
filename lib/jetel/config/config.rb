@@ -2,6 +2,6 @@
 
 module Jetel
   Config = {
-    DATA_DIRECTORY: File.absolute_path(File.join(File.dirname(__FILE__), '..', 'data'))
+    DATA_DIRECTORY: File.absolute_path(File.join(File.dirname(__FILE__), '..', '..', '..', 'data'))
   }
 end
