@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jetel (0.0.5)
+    jetel (0.0.6)
       activesupport
       gli
       i18n
