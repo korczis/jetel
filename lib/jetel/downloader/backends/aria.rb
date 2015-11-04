@@ -14,7 +14,8 @@ module Jetel
 
         opts = BaseDownloader::OPTS_DOWNLOAD.merge(opts)
 
-        cmd = "aria2c -d #{opts[:dir]} #{url}"
+        cmd = "aria2c -j 4 -t 600 -d \"#{opts[:dir]}\" #{url}"
+        puts(cmd)
 
         PTY.spawn(cmd) do |stdout, stdin, pid|
           begin
