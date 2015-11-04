@@ -3,7 +3,6 @@
 require 'pmap'
 
 require_relative '../../config/config'
-require_relative '../../helpers/helpers'
 require_relative '../../modules/module'
 
 module Jetel
@@ -16,20 +15,19 @@ module Jetel
         }
       ]
 
-      def download
+      def download(global_options, options, args)
         SOURCES.pmap do |source|
-          target_dir = Helper.target_dir(self, source)
-          downloader.download(source[:url], {:dir => target_dir})
+          download_source(source, global_options.merge(options))
         end
       end
 
-      def extract
+      def extract(global_options, options, args)
       end
 
-      def transform
+      def transform(global_options, options, args)
       end
 
-      def load
+      def load(global_options, options, args)
       end
     end
   end
