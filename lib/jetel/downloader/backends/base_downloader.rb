@@ -9,7 +9,8 @@ module Jetel
       DATA_DIRECTORY = Config[:DATA_DIRECTORY]
 
       OPTS_DOWNLOAD = {
-        :dir => DATA_DIRECTORY
+        :dir => DATA_DIRECTORY,
+        :timeout => 600
       }
 
       def download(url, opts = OPTS_DOWNLOAD)
