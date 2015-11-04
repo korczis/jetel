@@ -1038,20 +1038,107 @@ module Jetel
         }
       ]
 
-      def download
+      def download(global_options, options, args)
         SOURCES.pmap do |source|
-          target_dir = Helper.target_dir(self, source)
-          downloader.download(source[:url], {:dir => target_dir})
+          download_source(source, global_options.merge(options))
         end
       end
 
-      def extract
+      def extract(global_options, options, args)
+        SOURCES.pmap do |source|
+          downloaded_file = downloaded_file(source, global_options.merge(options))
+          dest_dir = extract_dir(source, global_options.merge(options))
+
+          FileUtils.mkdir_p(dest_dir)
+
+          Zip::ZipFile.open(downloaded_file) do |zip_file|
+            # Handle entries one by one
+            zip_file.each do |entry|
+              # Extract to file/directory/symlink
+              puts "Extracting #{entry.name}"
+              dest_file = File.join(dest_dir, entry.name.split('/').last)
+              FileUtils.rm_rf(dest_file)
+              entry.extract(dest_file)
+            end
+          end
+        end
       end
 
-      def transform
+      def transform(global_options, options, args)
+        SOURCES.pmap do |source|
+          opts = global_options.merge(options)
+
+          extracted_file = extracted_file(source, opts)
+          transformed_file = transformed_file(source, opts)
+
+          FileUtils.mkdir_p(transform_dir(source, opts))
+
+          csv_opts = {
+            :headers => true,
+            :col_sep => "\t",
+            :quote_char => "\x00"
+          }
+
+          puts "Transforming #{extracted_file}"
+          CSV.open(extracted_file, 'r', csv_opts) do |csv|
+            headers = %w(
+              RC
+              UFI
+              UNI
+              LAT
+              LONG
+              DMS_LAT
+              DMS_LONG
+              MGRS
+              JOG
+              FC
+              DSG
+              PC
+              CC1
+              ADM1
+              POP
+              ELEV
+              CC2
+              NT
+              LC
+              SHORT_FORM
+              GENERIC
+              SORT_NAME_RO
+              FULL_NAME_RO
+              FULL_NAME_ND_RO
+              SORT_NAME_RG
+              FULL_NAME_RG
+              FULL_NAME_ND_RG
+              NOTE
+              MODIFY_DATE
+              DISPLAY
+              NAME_RANK
+              NAME_LINK
+              TRANSL_CD
+              NM_MODIFY_DATE
+              F_EFCTV_DT
+              F_TERM_DT
+            )
+            CSV.open(transformed_file, 'w', :write_headers => true, :headers => headers, :quote_char => '"') do |csv_out|
+              csv.each do |row|
+                csv_out << row
+              end
+            end
+          end
+        end
       end
 
-      def load
+      def load(global_options, options, args)
+      end
+
+      def extracted_file(source, opts)
+        res = super(source, opts)
+        res.gsub('.zip', '.txt')
+      end
+
+      def transformed_file(source, opts)
+        res = super(source, opts)
+        res.gsub('.zip', '.txt')
       end
     end
   end
