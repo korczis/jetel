@@ -21,11 +21,13 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activesupport'
   spec.add_dependency 'gli'
+  spec.add_dependency 'i18n'
   spec.add_dependency 'json_pure'
   spec.add_dependency 'multi_json'
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'pg'
   spec.add_dependency 'pmap'
+  spec.add_dependency 'rubyzip'
   spec.add_dependency 'terminal-table'
   spec.add_dependency 'zip'
 
