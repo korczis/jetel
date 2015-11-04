@@ -5,9 +5,9 @@
 Run `jetel`
 
 ```
-tomaskorcak@kx-mac:~$ jetel
+$ jetel
 NAME
-    jetel - Jetel CLI 0.0.1
+    jetel - Jetel CLI 0.0.5
 
 SYNOPSIS
     jetel [global options] command [command options] [arguments...]
@@ -16,10 +16,13 @@ GLOBAL OPTIONS
     --help - Show this message
 
 COMMANDS
-    help    - Shows a list of commands or help for one command
-    ip, Ip  - Module ip
-    modules - Print modules info
-    version - Print version info
+    config     - Show config
+    help       - Shows a list of commands or help for one command
+    ip, Ip     - Module ip
+    modules    - Print modules info
+    nga, Nga   - Module nga
+    sfpd, Sfpd - Module sfpd
+    version    - Print version info
 ```
 
 ## Structure
@@ -31,11 +34,17 @@ COMMANDS
 │   └── jetel
 │       ├── cli
 │       │   └── cmd
+│       ├── config
 │       ├── downloader
+│       │   └── backends
 │       ├── etl
 │       ├── extensions
+│       ├── helpers
+│       ├── jetel
 │       └── modules
-│           └── ip
+│           ├── ip
+│           ├── nga
+│           └── sfpd
 ├── pkg
 └── test
 ```
