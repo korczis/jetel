@@ -1,9 +1,5 @@
 # encoding: utf-8
 
-require 'gli'
-
-include GLI::App
-
 require_relative '../../version'
 
 require_relative '../shared'

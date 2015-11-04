@@ -1,9 +1,6 @@
 # encoding: utf-8
 
-require 'gli'
 require 'pp'
-
-include GLI::App
 
 require_relative '../../version'
 

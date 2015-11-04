@@ -13,9 +13,7 @@ end
 
 include GLI::App
 
-program_desc "Jetel CLI #{Jetel::VERSION}"
-
-module Esri
+module Jetel
   # ESRI CLI
   module Cli
     # CLI Application

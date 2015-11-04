@@ -1,9 +1,6 @@
 # encoding: utf-8
 
-require 'gli'
 require 'terminal-table'
-
-include GLI::App
 
 require_relative '../../version'
 
@@ -55,8 +52,8 @@ def register_module(m)
 
       action_name = k
       action_description = v || "#{action_name} #{module_name}"
-      register_module_action(c, m, action_name, action_description) do
-        module_instance.send(k)
+      register_module_action(c, m, action_name, action_description) do |global_options, options, args|
+        module_instance.send(k, global_options, options, args)
       end
     end
   end
