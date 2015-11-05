@@ -1,6 +1,9 @@
 require_relative '../loader'
 
+require_relative '../../helpers/helpers'
+
 require 'pg'
+require 'csv2psql/convert/convert'
 
 module Jetel
   module Loaders
@@ -30,6 +33,32 @@ module Jetel
         }
 
         @client = PG.connect(opts)
+      end
+
+      def load(modul, source, file, opts)
+        res = super(modul, source, file, opts)
+
+        sql = Helper.erb_template(File.expand_path('../create_table.sql.erb', __FILE__), res)
+
+        convert_opts = {
+          :l => 100,
+          :skip => 0,
+          :header => true
+        }
+
+        res = Csv2Psql::Convert.generate_schema([file], convert_opts)
+        k = res.keys.first
+        v = res[k]
+
+        res = Helper.erb_template(File.expand_path('../sql/schema.sql.erb', __FILE__), {:ctx => {:table => 'text', :columns => v[:columns]}})
+        res.gsub!("\n\n", "\n")
+        CSV.open(file, 'r', :headers => true) do |csv|
+          csv.each do |row|
+            puts row
+          end
+        end
+
+        res
       end
     end
   end
