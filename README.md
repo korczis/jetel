@@ -49,7 +49,9 @@ COMMANDS
 └── test
 ```
 
-## Executables
+## Examples
+
+**Plays nicely with [csv2psql](https://github.com/korczis/csv2psql)**
 
 ### Rake
 
