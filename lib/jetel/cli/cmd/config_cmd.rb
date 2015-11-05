@@ -2,10 +2,6 @@
 
 require 'pp'
 
-require_relative '../../version'
-
-require_relative '../shared'
-
 require_relative '../../config/config'
 
 desc 'Show config'

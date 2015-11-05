@@ -2,10 +2,6 @@
 
 require 'terminal-table'
 
-require_relative '../../version'
-
-require_relative '../shared'
-
 require_relative '../../modules/modules'
 
 MODULES = Jetel::Modules.modules
