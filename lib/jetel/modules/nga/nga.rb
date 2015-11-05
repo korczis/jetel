@@ -1129,6 +1129,7 @@ module Jetel
       end
 
       def load(global_options, options, args)
+        opts = global_options.merge(options)
       end
 
       def extracted_file(source, opts)
