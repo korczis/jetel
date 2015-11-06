@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'activesupport'
-  spec.add_dependency 'csv2psql'
+  spec.add_dependency 'csv2psql', '~> 0.0.16'
   spec.add_dependency 'gli'
   spec.add_dependency 'i18n'
   spec.add_dependency 'json_pure'
