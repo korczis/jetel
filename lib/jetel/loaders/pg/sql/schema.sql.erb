@@ -1,4 +1,6 @@
-CREATE TABLE <%= ctx[:table] %>
+DROP TABLE IF EXISTS  "<%= ctx[:table] %>";
+
+CREATE TABLE "<%= ctx[:table] %>"
 (
 <% ctx[:columns].each_with_index do |item, index| %>
   "<%= Csv2Psql::Generator.sanitize_header(item[0]) %>" <%= item[1][:type].upcase %><% if !item[1][:null] %> NOT NULL<% end %><%= ', ' if index < ctx[:columns].length - 1%>

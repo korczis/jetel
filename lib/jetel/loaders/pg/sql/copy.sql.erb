@@ -1,0 +1,6 @@
+COPY "<%= ctx[:table] %>"
+  FROM STDIN
+  WITH DELIMITER ','
+  CSV HEADER
+;
+
