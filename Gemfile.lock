@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    jetel (0.0.6)
+    jetel (0.0.7)
       activesupport
-      csv2psql
+      csv2psql (~> 0.0.19)
       gli
       i18n
       json_pure
@@ -18,7 +18,7 @@ PATH
 PATH
   remote: /Users/tomaskorcak/dev/csv2psql
   specs:
-    csv2psql (0.0.15)
+    csv2psql (0.0.19)
       gli (~> 2.13, >= 2.13.2)
       json_pure (~> 1.8, >= 1.8.3)
       lru (~> 0.1, >= 0.1.0)
