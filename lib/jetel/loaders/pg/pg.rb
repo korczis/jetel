@@ -40,9 +40,10 @@ module Jetel
         super
 
         convert_opts = {
-          :l => 1_000,
+          :l => opts['analyze_num_rows'] && opts['analyze_num_rows'].to_i,
           :skip => 0,
-          :header => true
+          :header => true,
+          :delimiter => opts[:delimiter]
         }
 
         schema_list = Csv2Psql::Convert.generate_schema([file], convert_opts)
@@ -80,7 +81,8 @@ module Jetel
             :columns => schema[:columns],
             :source => source,
             :module => modul,
-            :file => File.absolute_path(modul.transformed_file(source, opts))
+            :file => File.absolute_path(modul.transformed_file(source, opts)),
+            :delimiter => opts[:delimiter]
           }
         }
 

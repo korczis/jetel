@@ -11,12 +11,20 @@ MODULES_ACTIONS = {
   extract: nil,
   transform: nil,
   load: {
-    params: [{
-      desc: 'Column type',
-      default_value: nil,
-      arg_name: 'column-name=column-type',
-      flag: [:column_type]
-    }]
+    params: [
+      {
+        desc: 'Column type',
+        default_value: nil,
+        arg_name: 'column-name=column-type',
+        flag: [:column_type]
+      },
+      {
+        desc: 'Num Lines to analyze',
+        default_value: 1000,
+        arg_name: 'num',
+        flag: [:analyze_num_rows]
+      }
+    ]
   }
 }
 

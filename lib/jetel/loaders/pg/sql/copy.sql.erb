@@ -1,6 +1,11 @@
 COPY "<%= ctx[:table] %>"
   FROM STDIN
-  WITH DELIMITER ','
+  <% if ctx[:delimiter] || ctx[:row_sep] %>
+    WITH DELIMITER '<%= ctx[:delimiter] || ctx[:row_sep] %>'
+  <% else %>
+    WITH DELIMITER ','
+  <% end %>
+
   CSV HEADER
 ;
 

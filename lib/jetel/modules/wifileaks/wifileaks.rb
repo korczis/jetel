@@ -45,7 +45,7 @@ module Jetel
           transformed_file = transformed_file(source, opts)
 
           puts "Transforming #{extracted_file}"
-          
+
           headers = %w(
             MAC
             SSID

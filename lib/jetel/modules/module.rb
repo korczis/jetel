@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'zip'
+
 require_relative '../downloader/downloader'
 require_relative '../helpers/helpers'
 
@@ -45,7 +47,7 @@ module Jetel
       end
 
       def download_source(source, opts)
-        downloader.download(source[:url], {:dir => download_dir(source, opts)})
+        downloader.download(source[:url], {:dir => download_dir(source, opts), :filename => source[:filename_downloaded]})
       end
 
       def target_dir(source, opts, *path)
@@ -93,6 +95,24 @@ module Jetel
           loader = Helper.get_loader(opts['data_loader'])
 
           loader.load(self, source, transformed_file, opts)
+        end
+      end
+
+      def unzip(source, options = {})
+        downloaded_file = downloaded_file(source, options)
+        dest_dir = extract_dir(source, options)
+
+        FileUtils.mkdir_p(dest_dir)
+
+        Zip::ZipFile.open(downloaded_file) do |zip_file|
+          # Handle entries one by one
+          zip_file.each do |entry|
+            # Extract to file/directory/symlink
+            puts "Extracting #{entry.name}"
+            dest_file = File.join(dest_dir, entry.name.split('/').last)
+            FileUtils.rm_rf(dest_file)
+            entry.extract(dest_file)
+          end
         end
       end
     end

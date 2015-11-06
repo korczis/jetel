@@ -31,21 +31,7 @@ module Jetel
 
       def extract(global_options, options, args)
         self.class.sources.pmap do |source|
-          downloaded_file = downloaded_file(source, global_options.merge(options))
-          dest_dir = extract_dir(source, global_options.merge(options))
-
-          FileUtils.mkdir_p(dest_dir)
-
-          Zip::ZipFile.open(downloaded_file) do |zip_file|
-            # Handle entries one by one
-            zip_file.each do |entry|
-              # Extract to file/directory/symlink
-              puts "Extracting #{entry.name}"
-              dest_file = File.join(dest_dir, entry.name.split('/').last)
-              FileUtils.rm_rf(dest_file)
-              entry.extract(dest_file)
-            end
-          end
+          unzip(source, global_options.merge(options))
         end
       end
 
