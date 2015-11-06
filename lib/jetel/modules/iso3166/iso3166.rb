@@ -10,23 +10,27 @@ require_relative '../../modules/module'
 module Jetel
   module Modules
     class Iso3166 < Module
-      SOURCES = [
-        {
-          name: 'iso366',
-          filename_extracted: 'IP2LOCATION-ISO3166-2.CSV',
-          filename_transformed: 'IP2LOCATION-ISO3166-2.CSV',
-          url: 'http://www.ip2location.com/downloads/Hi3sL9bnXfe/IP2LOCATION-ISO3166-2.ZIP'
-        }
-      ]
+      class << self
+        def sources
+          [
+            {
+              name: 'iso366',
+              filename_extracted: 'IP2LOCATION-ISO3166-2.CSV',
+              filename_transformed: 'IP2LOCATION-ISO3166-2.CSV',
+              url: 'http://www.ip2location.com/downloads/Hi3sL9bnXfe/IP2LOCATION-ISO3166-2.ZIP'
+            }
+          ]
+        end
+      end
 
       def download(global_options, options, args)
-        SOURCES.pmap do |source|
+        self.class.sources.pmap do |source|
           download_source(source, global_options.merge(options))
         end
       end
 
       def extract(global_options, options, args)
-        SOURCES.pmap do |source|
+        self.class.sources.pmap do |source|
           downloaded_file = downloaded_file(source, global_options.merge(options))
           dest_dir = extract_dir(source, global_options.merge(options))
 
@@ -46,7 +50,7 @@ module Jetel
       end
 
       def transform(global_options, options, args)
-        SOURCES.pmap do |source|
+        self.class.sources.pmap do |source|
           opts = global_options.merge(options)
 
           extracted_file = extracted_file(source, opts)
@@ -73,9 +77,6 @@ module Jetel
             end
           end
         end
-      end
-
-      def load(global_options, options, args)
       end
     end
   end

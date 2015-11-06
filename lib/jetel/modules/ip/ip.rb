@@ -10,41 +10,45 @@ require_relative '../../modules/module'
 module Jetel
   module Modules
     class Ip < Module
-      SOURCES = [
-        {
-          name: 'afrinic',
-          url: 'ftp://ftp.afrinic.net/pub/stats/afrinic/delegated-afrinic-latest'
-        },
-        {
-          name: 'apnic',
-          url: 'ftp://ftp.apnic.net/pub/stats/apnic/delegated-apnic-latest'
-        },
-        {
-          name: 'arin',
-          url: 'ftp://ftp.arin.net/pub/stats/arin/delegated-arin-latest'
-        },
-        {
-          name: 'lacnic',
-          url: 'ftp://ftp.lacnic.net/pub/stats/lacnic/delegated-lacnic-latest'
-        },
-        {
-          name: 'ripencc',
-          url: 'ftp://ftp.ripe.net/ripe/stats/delegated-ripencc-latest'
-        },
-        {
-          name: 'iana',
-          url: 'ftp://ftp.apnic.net/pub/stats/iana/delegated-iana-latest'
-        }
-      ]
+      class << self
+        def sources
+          [
+            {
+              name: 'afrinic',
+              url: 'ftp://ftp.afrinic.net/pub/stats/afrinic/delegated-afrinic-latest'
+            },
+            {
+              name: 'apnic',
+              url: 'ftp://ftp.apnic.net/pub/stats/apnic/delegated-apnic-latest'
+            },
+            {
+              name: 'arin',
+              url: 'ftp://ftp.arin.net/pub/stats/arin/delegated-arin-latest'
+            },
+            {
+              name: 'lacnic',
+              url: 'ftp://ftp.lacnic.net/pub/stats/lacnic/delegated-lacnic-latest'
+            },
+            {
+              name: 'ripencc',
+              url: 'ftp://ftp.ripe.net/ripe/stats/delegated-ripencc-latest'
+            },
+            {
+              name: 'iana',
+              url: 'ftp://ftp.apnic.net/pub/stats/iana/delegated-iana-latest'
+            }
+          ]
+        end
+      end
 
       def download(global_options, options, args)
-        SOURCES.pmap do |source|
+        self.class.sources.pmap do |source|
           download_source(source, global_options.merge(options))
         end
       end
 
       def extract(global_options, options, args)
-        SOURCES.pmap do |source|
+        self.class.sources.pmap do |source|
           downloaded_file = downloaded_file(source, global_options.merge(options))
           dest_dir = extract_dir(source, global_options.merge(options))
 
@@ -56,7 +60,7 @@ module Jetel
       end
 
       def transform(global_options, options, args)
-        SOURCES.pmap do |source|
+        self.class.sources.pmap do |source|
           opts = global_options.merge(options)
 
           extracted_file = extracted_file(source, opts)
@@ -87,18 +91,6 @@ module Jetel
               end
             end
           end
-        end
-      end
-
-      def load(global_options, options, args)
-        SOURCES.map do |source|
-          opts = global_options.merge(options)
-
-          transformed_file = transformed_file(source, opts)
-
-          loader = Helper.get_loader(opts['data_loader'])
-
-          loader.load(self, source, transformed_file, opts)
         end
       end
     end

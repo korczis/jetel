@@ -10,8 +10,8 @@ module Jetel
 
       class << self
         def target_dir(modul, source, dir, *path)
-          klass = I18n.transliterate(modul.class.name.split('::').last).gsub(/[^0-9a-z_\-]/i, '_')
-          source_name = I18n.transliterate(source[:name]).gsub(/[^0-9a-z_\-]/i, '_')
+          klass = modul.class.name.split('::').last
+          source_name = Helper.sanitize(source[:name])
           File.join(dir.kind_of?(String) ? dir : dir['download_dir'] || Config[:DATA_DIRECTORY], klass, source_name, path)
         end
 
@@ -74,6 +74,26 @@ module Jetel
 
       def transformed_file(source, opts)
         Module.transformed_file(self, source, opts)
+      end
+
+      def load(global_options, options, args)
+        sources = self.class.sources
+        if args.length > 0
+          args = args.map(&:downcase)
+          sources = sources.select do |source|
+            args.index(source[:name].downcase)
+          end
+        end
+
+        sources.pmap(8) do |source|
+          opts = global_options.merge(options)
+
+          transformed_file = transformed_file(source, opts)
+
+          loader = Helper.get_loader(opts['data_loader'])
+
+          loader.load(self, source, transformed_file, opts)
+        end
       end
     end
   end
