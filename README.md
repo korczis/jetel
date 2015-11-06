@@ -53,6 +53,12 @@ COMMANDS
 
 **Plays nicely with [csv2psql](https://github.com/korczis/csv2psql)**
 
+```
+$ csv2psql convert -t --drop-table --create-table -t afrinic tmp/Ip/afrinic/transformed/delegated-afrinic-latest | psql -h 127.0.0.1 -U jetel
+
+$ csv2psql convert -t --drop-table --create-table -t apnic tmp/Ip/apnic/transformed/delegated-apnic-latest | psql -h 127.0.0.1 -U jetel
+```
+
 ### Rake
 
 ```

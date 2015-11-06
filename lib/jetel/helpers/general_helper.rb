@@ -2,6 +2,7 @@
 
 require_relative '../config/config'
 
+require_relative '../helpers/helpers'
 require_relative '../loaders/loaders'
 
 require 'erb'
@@ -12,8 +13,8 @@ module Jetel
   module Helper
     class << self
       def target_dir(modul, dir, source)
-        klass = I18n.transliterate(modul.class.name.split('::').last).gsub(/[^0-9a-z_\-]/i, '_')
-        source_name = I18n.transliterate(source[:name]).gsub(/[^0-9a-z_\-]/i, '_')
+        klass = modul.class.name.split('::').last
+        source_name = Helper.sanitize(source[:name])
         File.join(dir || Config[:DATA_DIRECTORY], klass, source_name)
       end
 
@@ -34,6 +35,10 @@ module Jetel
       def erb_template(file, vars)
         template = File.open(file, 'r').read
         ERB.new(template).result(OpenStruct.new(vars).instance_eval { binding })
+      end
+
+      def sanitize(str)
+        I18n.transliterate(str).gsub(/[^0-9a-z_\-]/i, '_')
       end
     end
   end
