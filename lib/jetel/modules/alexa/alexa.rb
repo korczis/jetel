@@ -37,12 +37,21 @@ module Jetel
       def transform(global_options, options, args)
         self.class.sources.pmap do |source|
           extracted_file = extracted_file(source, global_options.merge(options))
+          transformed_file = transformed_file(source, global_options.merge(options))
           dest_dir = transform_dir(source, global_options.merge(options))
 
           puts "Transforming #{extracted_file}"
 
           FileUtils.mkdir_p(dest_dir)
-          FileUtils.cp(extracted_file, dest_dir)
+          File.open(extracted_file, 'rt') do |fin|
+            File.open(transformed_file, 'wt') do |fout|
+              fout.puts('rank,url')
+
+              while buff = fin.read(4096)
+                fout.write(buff)
+              end
+            end
+          end
         end
       end
     end
