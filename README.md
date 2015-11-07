@@ -102,6 +102,7 @@ $ jetel downloaders
 | aria | Jetel::Downloaders::Aria |
 | curl | Jetel::Downloaders::Curl |
 | ruby | Jetel::Downloaders::Ruby |
+| wget | Jetel::Downloaders::Wget |
 +------+--------------------------+
 ```
 
