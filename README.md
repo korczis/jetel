@@ -1,5 +1,11 @@
 # jetel
 
+## Status
+
+[![Gem Version](https://badge.fury.io/rb/jetel.svg)](http://badge.fury.io/rb/jetel) 
+[![Downloads](http://img.shields.io/gem/dt/jetel.svg)](http://rubygems.org/gems/jetel)
+[![Dependency Status](https://gemnasium.com/korczis/jetel.svg)](https://gemnasium.com/korczis/jetel)
+
 ## CLI - Command Line Interface
 
 Run `jetel`
