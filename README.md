@@ -188,7 +188,6 @@ COPY "geolite"
 │       │   └── backends
 │       ├── extensions
 │       ├── helpers
-│       ├── jetel
 │       ├── loaders
 │       │   ├── couchbase
 │       │   ├── elasticsearch
