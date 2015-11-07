@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 require 'fileutils'
-require_relative '../../config/config'
+require_relative '../config/config'
 
 module Jetel
   module Downloaders

@@ -2,7 +2,7 @@
 
 require 'zip'
 
-require_relative '../downloader/downloader'
+require_relative '../downloaders/downloader'
 require_relative '../helpers/helpers'
 
 module Jetel

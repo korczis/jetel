@@ -2,7 +2,7 @@
 
 require 'pty'
 
-require_relative 'base_downloader'
+require_relative '../base_downloader'
 
 module Jetel
   module Downloaders

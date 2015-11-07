@@ -5,7 +5,7 @@ require 'pathname'
 
 require_relative '../version'
 
-require_relative '../downloader/backends/base_downloader'
+require_relative '../downloaders/base_downloader'
 
 include GLI::App
 
