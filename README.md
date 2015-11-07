@@ -179,22 +179,29 @@ COPY "geolite"
 ```
 .
 ├── bin
-├── lib
+── lib
 │   └── jetel
 │       ├── cli
 │       │   └── cmd
 │       ├── config
 │       ├── downloader
 │       │   └── backends
-│       ├── etl
 │       ├── extensions
 │       ├── helpers
 │       ├── jetel
+│       ├── loaders
+│       │   ├── couchbase
+│       │   ├── elasticsearch
+│       │   └── pg
+│       │       └── sql
 │       └── modules
+│           ├── alexa
+│           ├── geolite
 │           ├── ip
+│           ├── iso3166
 │           ├── nga
-│           └── sfpd
-├── pkg
+│           ├── sfpd
+│           └── wifileaks
 └── test
 ```
 
