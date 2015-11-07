@@ -42,8 +42,6 @@ module Jetel
       end
 
       def choose_downloader
-        return Downloaders::Wgetx
-
         if Helper.which('aria2c')
           return Downloaders::Aria
         end

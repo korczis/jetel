@@ -16,7 +16,9 @@ module Jetel
 
         filename = opts[:filename] || url.split('/').last
 
-        cmd = "wget -o \"#{File.join(opts[:dir], filename)}\" #{url}"
+        FileUtils.mkdir_p(opts[:dir])
+
+        cmd = "wget -O \"#{File.join(opts[:dir], filename)}\" #{url}"
         puts(cmd)
 
         PTY.spawn(cmd) do |stdout, stdin, pid|
