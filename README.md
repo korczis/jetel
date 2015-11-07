@@ -100,6 +100,7 @@ $ jetel downloaders
 | Name | Class                    |
 +------+--------------------------+
 | aria | Jetel::Downloaders::Aria |
+| curl | Jetel::Downloaders::Curl |
 | ruby | Jetel::Downloaders::Ruby |
 +------+--------------------------+
 ```
