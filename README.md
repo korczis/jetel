@@ -186,8 +186,9 @@ COPY "geolite"
 │       ├── cli
 │       │   └── cmd
 │       ├── config
-│       ├── downloader
-│       │   └── backends
+│       ├── downloaders
+│       │   ├── aria
+│       │   └── ruby
 │       ├── extensions
 │       ├── helpers
 │       ├── loaders
