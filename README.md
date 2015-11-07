@@ -201,14 +201,16 @@ COPY "geolite"
 ```
 .
 ├── bin
-── lib
+├── lib
 │   └── jetel
 │       ├── cli
 │       │   └── cmd
 │       ├── config
 │       ├── downloaders
 │       │   ├── aria
-│       │   └── ruby
+│       │   ├── curl
+│       │   ├── ruby
+│       │   └── wget
 │       ├── extensions
 │       ├── helpers
 │       ├── loaders
