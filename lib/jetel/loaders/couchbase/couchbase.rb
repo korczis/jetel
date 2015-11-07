@@ -3,7 +3,6 @@ require_relative '../loader'
 require_relative '../../helpers/helpers'
 
 require 'couchbase'
-require 'yajl/json_gem'
 
 require 'securerandom'
 

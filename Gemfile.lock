@@ -16,7 +16,6 @@ PATH
       pmap
       rubyzip
       terminal-table
-      yajl-ruby (~> 1.2, >= 1.2.1)
       zip
 
 GEM
@@ -134,7 +133,6 @@ GEM
       unf_ext
     unf_ext (0.0.7.1)
     yaji (0.3.5)
-    yajl-ruby (1.2.1)
     zip (2.0.2)
 
 PLATFORMS
