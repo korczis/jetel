@@ -35,8 +35,8 @@ arg_name 'data-loader'
 flag [:l, :data_loader]
 
 # On Error handler
-on_error do |exception|
-  pp exception.backtrace
-  pp exception
-  true
-end
+# on_error do |exception|
+#   pp exception.backtrace
+#   pp exception
+#   true
+# end
