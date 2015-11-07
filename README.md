@@ -101,6 +101,7 @@ $ jetel downloaders
 +------+--------------------------+
 | aria | Jetel::Downloaders::Aria |
 | ruby | Jetel::Downloaders::Ruby |
++------+--------------------------+
 ```
 
 ### Show loaders
