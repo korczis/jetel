@@ -70,10 +70,11 @@ SYNOPSIS
 ### Show modules/sources
 
 ```
-$ jetel modules
+ jetel modules
 +-----------+---------------------------+
 | Name      | Class                     |
 +-----------+---------------------------+
+| alexa     | Jetel::Modules::Alexa     |
 | geolite   | Jetel::Modules::Geolite   |
 | ip        | Jetel::Modules::Ip        |
 | iso3166   | Jetel::Modules::Iso3166   |
