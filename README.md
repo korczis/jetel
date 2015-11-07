@@ -86,13 +86,14 @@ $ jetel modules
 ### Show loaders
 
 ```
-$ bundle exec ./bin/jetel loaders
-+-----------+---------------------------+
-| Name      | Class                     |
-+-----------+---------------------------+
-| couchbase | Jetel::Loaders::Couchbase |
-| pg        | Jetel::Loaders::Pg        |
-+-----------+---------------------------+
+$ jetel loaders
++---------------+-------------------------------+
+| Name          | Class                         |
++---------------+-------------------------------+
+| couchbase     | Jetel::Loaders::Couchbase     |
+| elasticsearch | Jetel::Loaders::Elasticsearch |
+| pg            | Jetel::Loaders::Pg            |
++---------------+-------------------------------+
 ```
 
 ### Download source
