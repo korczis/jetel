@@ -92,6 +92,17 @@ SYNOPSIS
 +-----------+---------------------------+
 ```
 
+### Show downloaders
+
+```
+$ jetel downloaders
++------+--------------------------+
+| Name | Class                    |
++------+--------------------------+
+| aria | Jetel::Downloaders::Aria |
+| ruby | Jetel::Downloaders::Ruby |
+```
+
 ### Show loaders
 
 ```
