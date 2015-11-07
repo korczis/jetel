@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'pg'
   spec.add_dependency 'pmap'
+  spec.add_dependency 'rest_client', '~> 1.8', '>= 1.8.3'
   spec.add_dependency 'rubyzip'
   spec.add_dependency 'terminal-table'
   spec.add_dependency 'yajl-ruby', '~> 1.2', '>= 1.2.1'
