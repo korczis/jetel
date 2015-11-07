@@ -107,9 +107,11 @@ module Jetel
 
         # Display any error messages
         while res = @client.get_result
-          if e_message = res.error_message
-            p e_message
+          e_message = res.error_message
+          if e_message && !e_message.empty?
+            puts e_message
           end
+          puts "#{res.cmdtuples} row(s) affected"
         end
 
         sql
