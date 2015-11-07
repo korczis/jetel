@@ -67,6 +67,22 @@ SYNOPSIS
     jetel [global options] geolite download
 ```
 
+### Show modules/sources
+
+```
+$ jetel modules
++-----------+---------------------------+
+| Name      | Class                     |
++-----------+---------------------------+
+| geolite   | Jetel::Modules::Geolite   |
+| ip        | Jetel::Modules::Ip        |
+| iso3166   | Jetel::Modules::Iso3166   |
+| nga       | Jetel::Modules::Nga       |
+| sfpd      | Jetel::Modules::Sfpd      |
+| wifileaks | Jetel::Modules::Wifileaks |
++-----------+---------------------------+
+```
+
 ### Download source
 
 ```
