@@ -42,7 +42,7 @@ module Jetel
       end
 
       def choose_downloader
-        return Downloaders::Curl
+        return Downloaders::Wgetx
 
         if Helper.which('aria2c')
           return Downloaders::Aria
@@ -50,6 +50,10 @@ module Jetel
 
         if Helper.which('curl')
           return Downloaders::Curl
+        end
+
+        if Helper.which('wget')
+          return Downloaders::Wget
         end
 
         Downloaders::Ruby
