@@ -5,7 +5,7 @@
 Run `jetel`
 
 ```
-$ jetel
+ jetel
 NAME
     jetel - Simple custom made tool for data download and basic ETL
 
@@ -13,7 +13,7 @@ SYNOPSIS
     jetel [global options] command [command options] [arguments...]
 
 VERSION
-    0.0.8
+    0.0.9
 
 GLOBAL OPTIONS
     -d, --download_dir=download-dir - Download directory (default: data)
@@ -23,11 +23,13 @@ GLOBAL OPTIONS
     --version                       - Display the program version
 
 COMMANDS
+    alexa, Alexa         - Module alexa
     config               - Show config
     geolite, Geolite     - Module geolite
     help                 - Shows a list of commands or help for one command
     ip, Ip               - Module ip
     iso3166, Iso3166     - Module iso3166
+    loaders              - Print loaders info
     modules              - Print modules info
     nga, Nga             - Module nga
     sfpd, Sfpd           - Module sfpd
