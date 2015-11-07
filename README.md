@@ -83,6 +83,18 @@ $ jetel modules
 +-----------+---------------------------+
 ```
 
+### Show loaders
+
+```
+$ bundle exec ./bin/jetel loaders
++-----------+---------------------------+
+| Name      | Class                     |
++-----------+---------------------------+
+| couchbase | Jetel::Loaders::Couchbase |
+| pg        | Jetel::Loaders::Pg        |
++-----------+---------------------------+
+```
+
 ### Download source
 
 ```
