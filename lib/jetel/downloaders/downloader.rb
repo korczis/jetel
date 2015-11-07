@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require_relative 'aria/aria'
+require_relative 'downloaders'
 
 module Jetel
   class Downloader

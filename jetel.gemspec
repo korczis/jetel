@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'elasticsearch', '~> 1.0', '>= 1.0.14'
   spec.add_dependency 'gli'
   spec.add_dependency 'i18n'
-  spec.add_dependency 'json_pure'
+  spec.add_dependency 'json_pure', '~> 1.8', '>= 1.8.3'
   spec.add_dependency 'multi_json'
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'pg'
@@ -41,6 +41,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop', '~> 0.35', '>= 0.35.0'
   spec.add_development_dependency 'simplecov'
 end
