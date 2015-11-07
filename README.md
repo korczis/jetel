@@ -1,5 +1,12 @@
 # jetel
 
+## Status
+
+[![Gem Version](https://badge.fury.io/rb/jetel.svg)](http://badge.fury.io/rb/csv2psql) 
+[![Downloads](http://img.shields.io/gem/dt/jetel.svg)](http://rubygems.org/gems/csv2psql)
+[![Dependency Status](https://gemnasium.com/korczis/jetel.svg)](https://gemnasium.com/korczis/csv2psql)
+orczis/csv2psql?branch=master)
+
 ## CLI - Command Line Interface
 
 Run `jetel`
