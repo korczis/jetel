@@ -29,7 +29,7 @@ module Jetel
         out_full_path = File.join(opts[:dir], filename)
 
         File.open(out_full_path, 'w') do |file|
-        RestClient::Request.execute(raw) do |chunk, _x, response|
+          RestClient::Request.execute(raw) do |chunk, _x, response|
             if response.code.to_s != '200'
               fail ArgumentError, "Error downloading #{url}. Got response: #{response.code} #{response} #{response.body}"
             end

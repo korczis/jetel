@@ -1,13 +1,11 @@
 # encoding: utf-8
 
-require_relative 'downloaders'
-
 module Jetel
   class Downloader
     attr_reader :downloader
 
     def initialize
-      @downloader = Downloaders::Aria.new
+      @downloader = Downloaders.choose_downloader.new
     end
 
     def download(file, opts = {})

@@ -1,5 +1,8 @@
 require 'active_support/inflector'
+require_relative 'downloaders'
+
 require_relative '../extensions/extensions'
+require_relative '../helpers/helpers'
 
 module Jetel
   module Downloaders
@@ -36,6 +39,14 @@ module Jetel
 
         # Remove nil values and return
         res.compact
+      end
+
+      def choose_downloader
+        if Helper.which('aria2c')
+          return Downloaders::Aria
+        end
+
+        Downloaders::Ruby
       end
     end
   end
