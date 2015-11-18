@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'pmap'
+require 'pty'
 
 require_relative '../../config/config'
 require_relative '../../modules/module'
