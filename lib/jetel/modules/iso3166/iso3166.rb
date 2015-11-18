@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'nokogiri'
+require 'open-uri'
 require 'pmap'
 require 'zip'
 require 'csv'
@@ -14,10 +16,8 @@ module Jetel
         def sources
           [
             {
-              name: 'iso366',
-              filename_extracted: 'IP2LOCATION-ISO3166-2.CSV',
-              filename_transformed: 'IP2LOCATION-ISO3166-2.CSV',
-              url: 'http://www.ip2location.com/downloads/Hi3sL9bnXfe/IP2LOCATION-ISO3166-2.ZIP'
+              name: 'iso3166',
+              url: 'https://en.wikipedia.org/wiki/ISO_3166-1'
             }
           ]
         end
@@ -31,35 +31,52 @@ module Jetel
 
       def extract(global_options, options, args)
         self.class.sources.pmap do |source|
-          unzip(source, global_options.merge(options))
+          downloaded_file = downloaded_file(source, global_options.merge(options))
+          dest_dir = extract_dir(source, global_options.merge(options))
+
+          puts "Extracting #{downloaded_file}"
+
+          FileUtils.mkdir_p(dest_dir)
+          FileUtils.cp(downloaded_file, dest_dir)
         end
       end
 
       def transform(global_options, options, args)
         self.class.sources.pmap do |source|
-          opts = global_options.merge(options)
-
-          extracted_file = extracted_file(source, opts)
-          transformed_file = transformed_file(source, opts)
-
-          FileUtils.mkdir_p(transform_dir(source, opts))
-
-          csv_opts = {
-            :headers => true
-          }
+          extracted_file = extracted_file(source, global_options.merge(options))
+          dest_dir = transform_dir(source, global_options.merge(options))
+          FileUtils.mkdir_p(dest_dir)
 
           puts "Transforming #{extracted_file}"
-          CSV.open(extracted_file, 'r', csv_opts) do |csv|
-            headers = %w(
-              country_code
-              subdivision_name
-              code
-            )
-            CSV.open(transformed_file, 'w', :write_headers => true, :headers => headers) do |csv_out|
-              csv.each do |row|
-                next if row.length < 3
-                csv_out << row
-              end
+
+          page = Nokogiri::HTML(open(extracted_file))
+          rows = page.css('table.wikitable.sortable tr')
+
+          headers = [
+            'name',
+            'alpha2',
+            'alpha3',
+            'numeric'
+          ]
+
+          transformed_file = "#{extracted_file.gsub(extract_dir(source, global_options.merge(options)), dest_dir)}.csv"
+          CSV.open(transformed_file, 'w', :write_headers => true, :headers => headers, :quote_char => '"', :force_quotes => true) do |csv|
+            rows.each do |row|
+              td = row.css('td')
+
+              next if td.length < 4
+
+              name = td[0].css('a').text
+              alpha2 = td[1].text
+              alpha3 = td[2].text
+              numeric = td[3].text
+
+              csv << [
+                 name,
+                 alpha2,
+                 alpha3,
+                 numeric
+              ]
             end
           end
         end
