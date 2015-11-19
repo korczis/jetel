@@ -24,7 +24,9 @@ module Jetel
             {
               name: name,
               url: "http://biogeo.ucdavis.edu/data/gadm2.8/shp/#{filename}",
-              filename_downloaded: filename
+              filename_downloaded: filename,
+              flat: true,
+              filename_transformed: "#{name}_adm?.topo.json"
             }
           end
 
