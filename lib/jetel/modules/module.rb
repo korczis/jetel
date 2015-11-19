@@ -14,7 +14,7 @@ module Jetel
         def target_dir(modul, source, dir, *path)
           klass = modul.class.name.split('::').last
           source_name = Helper.sanitize(source[:name])
-          File.join(dir.kind_of?(String) ? dir : dir['download_dir'] || Config[:DATA_DIRECTORY], klass, source_name, path)
+          File.join(dir.kind_of?(Hash) ? dir['download_dir'] : dir || Config[:DATA_DIRECTORY], klass, source[:flat] ? '' : source_name, path)
         end
 
         def download_dir(modul, source, opts)
@@ -47,7 +47,11 @@ module Jetel
       end
 
       def download_source(source, opts)
-        downloader.download(source[:url], {:dir => download_dir(source, opts), :filename => source[:filename_downloaded]})
+        downloaded_file = downloaded_file(source, opts)
+
+        unless File.exists?(downloaded_file)
+          downloader.download(source[:url], {:dir => download_dir(source, opts), :filename => source[:filename_downloaded]})
+        end
       end
 
       def target_dir(source, opts, *path)
@@ -87,14 +91,17 @@ module Jetel
           end
         end
 
-        sources.pmap(8) do |source|
+        sources.map do |source|
           opts = global_options.merge(options)
 
           transformed_file = transformed_file(source, opts)
 
           loader = Helper.get_loader(opts['data_loader'])
 
-          loader.load(self, source, transformed_file, opts)
+          Dir.glob(transformed_file).each do |one_file|
+            puts "Loading file #{one_file}"
+            loader.load(self, source, one_file, opts)
+          end
         end
       end
 
