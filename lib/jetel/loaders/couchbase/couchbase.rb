@@ -3,7 +3,7 @@ require_relative '../loader'
 require_relative '../../helpers/helpers'
 
 require 'couchbase'
-
+require 'multi_json'
 require 'securerandom'
 
 module Jetel
@@ -40,9 +40,7 @@ module Jetel
         @client = ::Couchbase.connect(opts)
       end
 
-      def load(modul, source, file, opts)
-        super
-
+      def load_csv(modul, source, file, opts)
         cache = {}
         CSV.open(file, 'rt', :headers => true, :converters => :all) do |csv|
           csv.each do |row|
@@ -58,6 +56,24 @@ module Jetel
             client.add(cache)
             cache = {}
           end
+        end
+      end
+
+      def load_json(modul, source, file, opts)
+        uuid = SecureRandom.uuid
+        doc = {
+          uuid => MultiJson.load(File.read(file))
+        }
+        client.add(doc)
+      end
+
+      def load(modul, source, file, opts)
+        super
+
+        if file =~ /\.csv/
+          load_csv(modul, source, file, opts)
+        elsif file =~ /\.json/
+          load_json(modul, source, file, opts)
         end
       end
     end
