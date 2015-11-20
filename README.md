@@ -11,7 +11,8 @@
 Run `jetel`
 
 ```
-jetel$ ./bin/jetel
+$jetel
+
 NAME
     jetel - Simple custom made tool for data download and basic ETL
 
