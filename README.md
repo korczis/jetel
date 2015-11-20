@@ -11,7 +11,7 @@
 Run `jetel`
 
 ```
-$jetel
+$ jetel
 
 NAME
     jetel - Simple custom made tool for data download and basic ETL
@@ -82,7 +82,7 @@ SYNOPSIS
 ### Show modules/sources
 
 ```
- jetel modules
+$ jetel modules
 +-----------+---------------------------+
 | Name      | Class                     |
 +-----------+---------------------------+
