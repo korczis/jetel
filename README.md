@@ -11,7 +11,7 @@
 Run `jetel`
 
 ```
- jetel
+jetel$ ./bin/jetel
 NAME
     jetel - Simple custom made tool for data download and basic ETL
 
@@ -19,7 +19,7 @@ SYNOPSIS
     jetel [global options] command [command options] [arguments...]
 
 VERSION
-    0.0.9
+    0.0.15
 
 GLOBAL OPTIONS
     -d, --download_dir=download-dir - Download directory (default: data)
@@ -31,6 +31,8 @@ GLOBAL OPTIONS
 COMMANDS
     alexa, Alexa         - Module alexa
     config               - Show config
+    downloaders          - Print downloaders info
+    gadm, Gadm           - Module gadm
     geolite, Geolite     - Module geolite
     help                 - Shows a list of commands or help for one command
     ip, Ip               - Module ip
@@ -39,6 +41,7 @@ COMMANDS
     modules              - Print modules info
     nga, Nga             - Module nga
     sfpd, Sfpd           - Module sfpd
+    tiger, Tiger         - Module tiger
     version              - Print version info
     wifileaks, Wifileaks - Module wifileaks
 ```
