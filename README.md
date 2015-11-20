@@ -52,7 +52,6 @@ COMMANDS
 
 ```
 $ jetel help tiger
-WARNING: The rest_client gem is deprecated and will be removed from RubyGems. Please use rest-client gem instead.
 NAME
     tiger - Module tiger
 
