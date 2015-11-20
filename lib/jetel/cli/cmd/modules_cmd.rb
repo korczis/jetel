@@ -28,6 +28,16 @@ require_relative '../../modules/modules'
 MODULES = Jetel::Modules.modules
 
 MODULES_ACTIONS = {
+  sources: {
+    params: [
+      {
+        desc: 'Format',
+        default_value: nil,
+        arg_name: 'format=format',
+        flag: [:format]
+      }
+    ]
+  },
   download: nil,
   extract: nil,
   transform: nil,
