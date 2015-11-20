@@ -1,4 +1,15 @@
 language: ruby
+
+compiler:
+  - clang
+  - gcc
+
+before_install:
+  - sudo apt-get -y install python-software-properties
+  - sudo add-apt-repository -y ppa:mnunberg/cmake
+  - sudo apt-get update
+  - sudo apt-get -y install libgtest-dev libssl-dev libev-dev libevent-dev cmake
+
 rvm:
   - 1.9.3
   - jruby-18mode # JRuby in 1.8 mode
