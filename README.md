@@ -11,7 +11,8 @@
 Run `jetel`
 
 ```
- jetel
+$ jetel
+
 NAME
     jetel - Simple custom made tool for data download and basic ETL
 
@@ -19,7 +20,7 @@ SYNOPSIS
     jetel [global options] command [command options] [arguments...]
 
 VERSION
-    0.0.9
+    0.0.15
 
 GLOBAL OPTIONS
     -d, --download_dir=download-dir - Download directory (default: data)
@@ -31,6 +32,8 @@ GLOBAL OPTIONS
 COMMANDS
     alexa, Alexa         - Module alexa
     config               - Show config
+    downloaders          - Print downloaders info
+    gadm, Gadm           - Module gadm
     geolite, Geolite     - Module geolite
     help                 - Shows a list of commands or help for one command
     ip, Ip               - Module ip
@@ -39,6 +42,7 @@ COMMANDS
     modules              - Print modules info
     nga, Nga             - Module nga
     sfpd, Sfpd           - Module sfpd
+    tiger, Tiger         - Module tiger
     version              - Print version info
     wifileaks, Wifileaks - Module wifileaks
 ```
@@ -78,16 +82,18 @@ SYNOPSIS
 ### Show modules/sources
 
 ```
- jetel modules
+$ jetel modules
 +-----------+---------------------------+
 | Name      | Class                     |
 +-----------+---------------------------+
 | alexa     | Jetel::Modules::Alexa     |
+| gadm      | Jetel::Modules::Gadm      |
 | geolite   | Jetel::Modules::Geolite   |
 | ip        | Jetel::Modules::Ip        |
 | iso3166   | Jetel::Modules::Iso3166   |
 | nga       | Jetel::Modules::Nga       |
 | sfpd      | Jetel::Modules::Sfpd      |
+| tiger     | Jetel::Modules::Tiger     |
 | wifileaks | Jetel::Modules::Wifileaks |
 +-----------+---------------------------+
 ```
@@ -233,8 +239,8 @@ COPY "geolite"
 
 ```
 $ rake -T
-rake gem:build          # Build jetel-0.0.8.gem into the pkg directory
-rake gem:install        # Build and install jetel-0.0.8.gem into system gems
-rake gem:install:local  # Build and install jetel-0.0.8.gem into system gems without network access
-rake gem:release        # Create tag v0.0.8 and build and push jetel-0.0.8.gem to Rubygems
+rake gem:build          # Build jetel-0.0.15.gem into the pkg directory
+rake gem:install        # Build and install jetel-0.0.15.gem into system gems
+rake gem:install:local  # Build and install jetel-0.0.15.gem into system gems without network access
+rake gem:release        # Create tag v0.0.15 and build and push jetel-0.0.15.gem to Rubygems
 ```
