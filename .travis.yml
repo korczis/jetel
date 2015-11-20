@@ -1,10 +1,20 @@
 language: ruby
 
-sudo: false
+sudo: required
 
 compiler:
   - clang
   - gcc
+
+before_install:
+  # LibCouchbase
+  - wget -O/etc/apt/sources.list.d/couchbase.list http://packages.couchbase.com/ubuntu/couchbase-ubuntu1204.list
+  - "wget http://packages.couchbase.com/ubuntu/couchbase.key && sudo cat couchbase.key | sudo apt-key add -"
+
+  - apt-get -y install python-software-properties
+  - add-apt-repository -y ppa:mnunberg/cmake
+  - apt-get update
+  - apt-get -y install libgtest-dev libssl-dev libev-dev libevent-dev cmake
 
 addons:
   apt:
