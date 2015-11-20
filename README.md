@@ -48,24 +48,27 @@ COMMANDS
     wifileaks, Wifileaks - Module wifileaks
 ```
 
-### Show help for command
+### Show help for module command
 
 ```
-$ jetel help geolite
+$ jetel help tiger
+WARNING: The rest_client gem is deprecated and will be removed from RubyGems. Please use rest-client gem instead.
 NAME
-    geolite - Module geolite
+    tiger - Module tiger
 
 SYNOPSIS
-    jetel [global options] geolite download
-    jetel [global options] geolite extract
-    jetel [global options] geolite load [--analyze_num_rows num] [--column_type column-name=column-type]
-    jetel [global options] geolite transform
+    jetel [global options] tiger download
+    jetel [global options] tiger extract
+    jetel [global options] tiger load [--analyze_num_rows num] [--column_type column-name=column-type]
+    jetel [global options] tiger sources [--format format=format]
+    jetel [global options] tiger transform
 
 COMMANDS
-    download  - download geolite
-    extract   - extract geolite
-    load      - load geolite
-    transform - transform geolite
+    download  - download tiger
+    extract   - extract tiger
+    load      - load tiger
+    sources   - sources tiger
+    transform - transform tiger
 ```
 
 
