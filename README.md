@@ -242,8 +242,9 @@ COPY "geolite"
 
 ```
 $ rake -T
-rake gem:build          # Build jetel-0.0.15.gem into the pkg directory
-rake gem:install        # Build and install jetel-0.0.15.gem into system gems
-rake gem:install:local  # Build and install jetel-0.0.15.gem into system gems without network access
-rake gem:release        # Create tag v0.0.15 and build and push jetel-0.0.15.gem to Rubygems
+rake gem:build          # Build jetel-0.0.16.gem into the pkg directory
+rake gem:install        # Build and install jetel-0.0.16.gem into system gems
+rake gem:install:local  # Build and install jetel-0.0.16.gem into system gems without network access
+rake gem:release        # Create tag v0.0.16 and build and push jetel-0.0.16.gem to Rubygems
+rake spec               # Run RSpec code examples
 ```
