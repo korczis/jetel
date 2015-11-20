@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activesupport'
   spec.add_dependency 'aws-sdk', '~> 2'
-  # spec.add_dependency 'couchbase', '~> 1.3', '>= 1.3.14'
+  spec.add_dependency 'couchbase', '~> 1.3', '>= 1.3.14'
   spec.add_dependency 'csv2psql', '~> 0.0.19'
   spec.add_dependency 'elasticsearch', '~> 1.0', '>= 1.0.14'
   spec.add_dependency 'gli'
