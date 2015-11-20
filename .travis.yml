@@ -16,6 +16,7 @@ addons:
     packages:
     - python-software-properties
     - cmake
+    - libcouchbase-dev
     - libgtest-dev
     - libssl-dev
     - libev-dev
