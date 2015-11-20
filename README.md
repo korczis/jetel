@@ -87,11 +87,13 @@ SYNOPSIS
 | Name      | Class                     |
 +-----------+---------------------------+
 | alexa     | Jetel::Modules::Alexa     |
+| gadm      | Jetel::Modules::Gadm      |
 | geolite   | Jetel::Modules::Geolite   |
 | ip        | Jetel::Modules::Ip        |
 | iso3166   | Jetel::Modules::Iso3166   |
 | nga       | Jetel::Modules::Nga       |
 | sfpd      | Jetel::Modules::Sfpd      |
+| tiger     | Jetel::Modules::Tiger     |
 | wifileaks | Jetel::Modules::Wifileaks |
 +-----------+---------------------------+
 ```
