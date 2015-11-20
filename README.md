@@ -2,6 +2,7 @@
 
 ## Status
 
+[![Build Status](https://travis-ci.org/korczis/jetel.svg)](https://travis-ci.org/korczis/jetel)
 [![Gem Version](https://badge.fury.io/rb/jetel.svg)](http://badge.fury.io/rb/jetel) 
 [![Downloads](http://img.shields.io/gem/dt/jetel.svg)](http://rubygems.org/gems/jetel)
 [![Dependency Status](https://gemnasium.com/korczis/jetel.svg)](https://gemnasium.com/korczis/jetel)
