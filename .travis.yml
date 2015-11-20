@@ -1,5 +1,7 @@
 language: ruby
 
+sudo: false
+
 compiler:
   - clang
   - gcc
@@ -15,7 +17,7 @@ before_install:
   - "sudo wget http://packages.couchbase.com/ubuntu/couchbase.key && sudo cat couchbase.key | sudo apt-key add -"
   - sudo apt-get update
   - sudo apt-get install libcouchbase2 libcouchbase-dev
-  
+
 rvm:
   - 1.9.3
   - jruby-18mode # JRuby in 1.8 mode
