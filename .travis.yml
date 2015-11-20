@@ -7,16 +7,16 @@ compiler:
   - gcc
 
 before_install:
-  - sudo apt-get -y install python-software-properties
-  - sudo add-apt-repository -y ppa:mnunberg/cmake
-  - sudo apt-get update
-  - sudo apt-get -y install libgtest-dev libssl-dev libev-dev libevent-dev cmake
+  - apt-get -y install python-software-properties
+  - add-apt-repository -y ppa:mnunberg/cmake
+  - apt-get update
+  - apt-get -y install libgtest-dev libssl-dev libev-dev libevent-dev cmake
 
  # LibCouchbase
-  - sudo wget -O/etc/apt/sources.list.d/couchbase.list http://packages.couchbase.com/ubuntu/couchbase-ubuntu1204.list
-  - "sudo wget http://packages.couchbase.com/ubuntu/couchbase.key && sudo cat couchbase.key | sudo apt-key add -"
-  - sudo apt-get update
-  - sudo apt-get install libcouchbase2 libcouchbase-dev
+  - wget -O/etc/apt/sources.list.d/couchbase.list http://packages.couchbase.com/ubuntu/couchbase-ubuntu1204.list
+  - "wget http://packages.couchbase.com/ubuntu/couchbase.key && sudo cat couchbase.key | sudo apt-key add -"
+  - apt-get update
+  - apt-get install libcouchbase2 libcouchbase-dev
 
 rvm:
   - 2.2
