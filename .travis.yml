@@ -19,19 +19,19 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y install libcouchbase2-dev
 
-addons:
-  apt:
-    packages:
-    - python-software-properties
-    - cmake
-    - libcouchbase
-    - libcouchbase-dev
-    - libgtest-dev
-    - libssl-dev
-    - libev-dev
-    - libevent-dev
-    - libcouchbase2
-    - libcouchbase-dev
+#addons:
+#  apt:
+#    packages:
+#    - python-software-properties
+#    - cmake
+#    - libcouchbase
+#    - libcouchbase-dev
+#    - libgtest-dev
+#    - libssl-dev
+#    - libev-dev
+#    - libevent-dev
+#    - libcouchbase
+#    - libcouchbase-dev
 
 rvm:
   - 2.2
