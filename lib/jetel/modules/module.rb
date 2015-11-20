@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+require 'multi_json'
+require 'pp'
 require 'zip'
 
 require_relative '../downloaders/downloader'
@@ -123,6 +125,19 @@ module Jetel
             loader.load(self, source, one_file, opts)
           end
         end
+      end
+
+      def sources(global_options, options, _args)
+        opts = global_options.merge(options)
+
+        res = self.class.sources
+
+        if opts['format'] == 'json'
+          puts MultiJson.dump(res, :pretty => true)
+        else
+          pp res
+        end
+
       end
 
       def unzip(source, options = {})
