@@ -60,7 +60,8 @@ module Jetel
             puts "Transforming #{shapefile}"
 
             # "topojson data/Gadm/AFG/extracted/AFG_adm0.shp -o data/Gadm/AFG/transformed/AFG_adm0.topo.json"
-            cmd = "topojson #{shapefile} -o #{shapefile.gsub(extracted_dir, dest_dir).gsub('.shp', '.topo.json')}"
+            destfile = shapefile.gsub(extracted_dir, dest_dir).gsub('.shp', '.topo.json')
+            cmd = "topojson --no-stitch-poles --no-force-clockwise #{shapefile} -o #{destfile} -p"
             puts cmd
             PTY.spawn(cmd) do |stdout, stdin, pid|
               begin
