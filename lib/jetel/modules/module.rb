@@ -146,7 +146,7 @@ module Jetel
 
         FileUtils.mkdir_p(dest_dir)
 
-        Zip::ZipFile.open(downloaded_file) do |zip_file|
+        ::Zip::File.open(downloaded_file) do |zip_file|
           # Handle entries one by one
           zip_file.each do |entry|
             # Extract to file/directory/symlink
