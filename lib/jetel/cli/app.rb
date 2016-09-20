@@ -50,4 +50,11 @@ module Jetel
   end
 end
 
-launch
+begin
+  launch
+rescue => e
+  puts e.class
+  puts e.message
+  puts e.backtrace
+end
+

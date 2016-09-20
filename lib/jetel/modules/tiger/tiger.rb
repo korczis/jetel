@@ -31,7 +31,7 @@ require 'open-uri'
 module Jetel
   module Modules
     class Tiger < Module
-      BASE_URL = 'http://www2.census.gov/geo/tiger/TIGER2015'
+      BASE_URL = 'https://www2.census.gov/geo/tiger/TIGER2015'
       CSS_SELECTOR = '#innerPage > table > tr > td > a'
 
       class << self
