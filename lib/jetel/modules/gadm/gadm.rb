@@ -63,11 +63,16 @@ module Jetel
               destfile = shapefile.gsub(extracted_dir, dest_dir).gsub('.shp', '.topo.json')
               cmd = "topojson --no-stitch-poles -q 1e#{quantization} #{shapefile} -o #{destfile} -p --bbox --shapefile-encoding utf8"
               puts cmd
-              PTY.spawn(cmd) do |stdout, stdin, pid|
-                begin
-                  # Do stuff with the output here. Just printing to show it works
-                  stdout.each { |line| print line }
+              begin
+                PTY.spawn(cmd) do |stdout, stdin, pid|
+                  begin
+                    # Do stuff with the output here. Just printing to show it works
+                    stdout.each { |line| print line }
+                  end
                 end
+              rescue => e
+                puts e.message
+                puts e.backtrace
               end
             end
           end
