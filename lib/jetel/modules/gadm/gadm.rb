@@ -27,7 +27,7 @@ module Jetel
               name: name,
               url: "http://biogeo.ucdavis.edu/data/gadm2.8/shp/#{filename}",
               filename_downloaded: filename,
-              flat: true,
+              flat: false,
               filename_transformed: "#{name}_adm?.topo.json"
             }
           end
@@ -37,36 +37,37 @@ module Jetel
       end
 
       def download(global_options, options, args)
-        self.class.sources.pmap do |source|
+        self.class.sources.pmap(4) do |source|
           download_source(source, global_options.merge(options))
         end
       end
 
       def extract(global_options, options, args)
-        self.class.sources.pmap do |source|
+        self.class.sources.pmap(4) do |source|
           unzip(source, global_options.merge(options))
         end
       end
 
       def transform(global_options, options, args)
-        self.class.sources.pmap(8) do |source|
-          extracted_file = extracted_file(source, global_options.merge(options))
-          transformed_file = transformed_file(source, global_options.merge(options))
-          dest_dir = transform_dir(source, global_options.merge(options))
-          FileUtils.mkdir_p(dest_dir)
+        [1, 2, 3, 4, 5, 6, 7, 8, 9].each do |quantization|
+          self.class.sources.pmap(4) do |source|
+            extracted_file = extracted_file(source, global_options.merge(options))
+            transformed_file = transformed_file(source, global_options.merge(options))
+            dest_dir = File.join(transform_dir(source, global_options.merge(options)), quantization.to_s)
+            FileUtils.mkdir_p(dest_dir)
 
-          extracted_dir = extract_dir(source, global_options.merge(options))
-          Dir.glob("#{extracted_dir}/*.shp") do |shapefile|
-            puts "Transforming #{shapefile}"
+            extracted_dir = extract_dir(source, global_options.merge(options))
+            Dir.glob("#{extracted_dir}/*.shp") do |shapefile|
+              puts "Transforming #{shapefile}"
 
-            # "topojson data/Gadm/AFG/extracted/AFG_adm0.shp -o data/Gadm/AFG/transformed/AFG_adm0.topo.json"
-            destfile = shapefile.gsub(extracted_dir, dest_dir).gsub('.shp', '.topo.json')
-            cmd = "topojson --no-stitch-poles --no-force-clockwise #{shapefile} -o #{destfile} -p"
-            puts cmd
-            PTY.spawn(cmd) do |stdout, stdin, pid|
-              begin
-                # Do stuff with the output here. Just printing to show it works
-                stdout.each { |line| print line }
+              destfile = shapefile.gsub(extracted_dir, dest_dir).gsub('.shp', '.topo.json')
+              cmd = "topojson --no-stitch-poles -q 1e#{quantization} #{shapefile} -o #{destfile} -p --bbox --shapefile-encoding utf8"
+              puts cmd
+              PTY.spawn(cmd) do |stdout, stdin, pid|
+                begin
+                  # Do stuff with the output here. Just printing to show it works
+                  stdout.each { |line| print line }
+                end
               end
             end
           end
