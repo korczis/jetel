@@ -2,15 +2,27 @@ language: ruby
 
 # sudo: true
 
+env:
+  - CXX=g++-4.8
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+      - libgtest-dev
+      - libssl-dev
+      - libev-dev
+      - libevent-dev
+      - cmake
+
 compiler:
   - clang
   - gcc
 
-before_install:
-  - sudo apt-get -y install python-software-properties
-  - sudo add-apt-repository -y ppa:mnunberg/cmake
-  - sudo apt-get update
-  - sudo apt-get -y install libgtest-dev libssl-dev libev-dev libevent-dev cmake
+install:
+  - ./.travis/install.sh
 
 #addons:
 #  apt:
@@ -31,4 +43,5 @@ rvm:
   - 2.1
   - 2.0.0
   - 1.9.3
+
 
