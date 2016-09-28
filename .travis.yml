@@ -1,6 +1,10 @@
 language: ruby
 
-# sudo: true
+sudo: true
+
+os:
+  - "linux"
+  - "osx"
 
 env:
   - CXX=g++-4.8
@@ -16,6 +20,7 @@ addons:
       - libev-dev
       - libevent-dev
       - cmake
+      - python-software-properties
 
 compiler:
   - clang
