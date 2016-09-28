@@ -4,7 +4,6 @@ sudo: true
 
 os:
   - "linux"
-  - "osx"
 
 env:
   - CXX=g++-4.8
@@ -46,8 +45,6 @@ install:
 
 rvm:
   - 2.2
-  - 2.1
-  - 2.0.0
-  - 1.9.3
+  - 2.3
 
 
