@@ -26,6 +26,11 @@ require_relative 'downloaders'
 require_relative '../extensions/extensions'
 require_relative '../helpers/helpers'
 
+require_relative 'aria/aria'
+require_relative 'curl/curl'
+require_relative 'ruby/ruby'
+require_relative 'wget/wget'
+
 module Jetel
   module Downloaders
     class << self
