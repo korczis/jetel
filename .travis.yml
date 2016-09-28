@@ -28,6 +28,7 @@ compiler:
 
 install:
   - ./.travis/install.sh
+  - bundle install
 
 #addons:
 #  apt:
